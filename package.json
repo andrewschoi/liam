@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aws-sdk": "^2.1324.0",
     "microphone-stream": "^6.0.1",
     "next": "13.2.1",
     "react": "18.2.0",
