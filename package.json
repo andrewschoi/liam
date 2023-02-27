@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/andrewschoi/readybot/issues"
   },
-  "homepage": "https://github.com/andrewschoi/readybot#readme"
+  "homepage": "https://github.com/andrewschoi/readybot#readme",
+  "dependencies": {
+    "microphone-stream": "^6.0.1"
+  }
 }
