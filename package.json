@@ -1,0 +1,20 @@
+{
+  "name": "readybot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ready-bot && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewschoi/readybot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewschoi/readybot/issues"
+  },
+  "homepage": "https://github.com/andrewschoi/readybot#readme"
+}
