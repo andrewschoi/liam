@@ -1,23 +1,16 @@
 {
   "name": "readybot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd ready-bot && npm run dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andrewschoi/readybot.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/andrewschoi/readybot/issues"
-  },
-  "homepage": "https://github.com/andrewschoi/readybot#readme",
   "dependencies": {
-    "microphone-stream": "^6.0.1"
+    "next": "13.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   }
 }
