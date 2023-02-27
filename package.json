@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.279.0",
+    "@aws-sdk/client-transcribe-streaming": "^3.279.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.279.0",
     "aws-sdk": "^2.1324.0",
     "microphone-stream": "^6.0.1",
     "next": "13.2.1",
