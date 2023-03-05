@@ -1,23 +1,15 @@
-const endpoint =
-  "https://transcribestreaming.region.amazonaws.com/stream-transcription";
-const languageCode = "en-US"; // Replace with the desired language code
-const sampleRate = 44100; // Replace with the sample rate of your audio stream
+import AWS from "aws-sdk";
 
-const headers = {
-  "Content-Type": "application/vnd.amazon.eventstream",
-  "X-Amz-Target": "com.amazonaws.transcribe.StartStreamTranscription",
-  "X-Amz-Transcribe-Language-Code": languageCode,
-  "X-Amz-Transcribe-Sample-Rate": sampleRate.toString(),
-};
-
-async function startStreamingTranscription(audioStream) {
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: headers,
-    body: audioStream,
+const getTranscription = () => {
+  const transcribeservice = new AWS.TranscribeService({
+    apiVersion: "2017-10-26",
   });
 
-  // Process the response as needed
-}
+  transcribeservice.createCallAnalyticsCategory(params, function (err, data) {
+    if (err) console.log(err, err.stack); // an error occurred
+    else console.log(data); // successful response
+  });
+  return transcribeservice;
+};
 
-export default startStreamingTranscription;
+export default getTranscription;
