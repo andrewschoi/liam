@@ -1,4 +1,4 @@
-const getAudioStream = () => {
+const getAudioStream = (handler) => {
   return new Promise((resolve, reject) => {
     navigator.mediaDevices
       .getUserMedia({ video: false, audio: true })
@@ -10,19 +10,19 @@ const getAudioStream = () => {
           1,
           1
         );
-        const pcmData = [];
 
         scriptProcessorNode.addEventListener("audioprocess", (event) => {
           const inputBuffer = event.inputBuffer;
           const channelData = inputBuffer.getChannelData(0);
-          pcmData.push(...channelData);
+          handler(channelData);
         });
 
         sourceNode.connect(scriptProcessorNode);
         scriptProcessorNode.connect(audioContext.destination);
 
         stream.onended = () => {
-          resolve(pcmData);
+          console.log("stopped audio capture");
+          resolve();
         };
       })
       .catch((err) => {
