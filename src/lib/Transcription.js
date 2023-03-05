@@ -22,3 +22,5 @@ class Transcription {
     }
   }
 }
+
+export default Transcription;
