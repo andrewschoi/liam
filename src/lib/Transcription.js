@@ -1,17 +1,22 @@
-import { TranscribeStreamingClient } from "@aws-sdk/client-transcribe-streaming";
 import { Buffer } from "buffer";
-import MicrophoneStream from "microphone-stream";
+const {
+  TranscribeStreamingClient,
+} = require("@aws-sdk/client-transcribe-streaming");
+const MicrophoneStream = require("microphone-stream");
 
 class Transcription {
   constructor() {
-    this.SAMPLE_RATE = 44100;
+    this.sampleRate = 44100;
     this.microphoneStream = undefined;
     this.transcribeClient = undefined;
+    this.createTranscribeClient();
+    this.createMicrophoneStream();
+    this.getAudioStream();
   }
 
   getAudioStream = async function* () {
-    for await (const chunk of microphoneStream) {
-      if (chunk.length <= SAMPLE_RATE) {
+    for await (const chunk of this.microphoneStream) {
+      if (chunk.length <= this.sampleRate) {
         yield {
           AudioEvent: {
             AudioChunk: encodePCMChunk(chunk),
@@ -34,30 +39,30 @@ class Transcription {
   };
 
   stopRecording = function () {
-    if (microphoneStream) {
-      microphoneStream.stop();
-      microphoneStream.destroy();
-      microphoneStream = undefined;
+    if (this.microphoneStream) {
+      this.microphoneStream.stop();
+      this.microphoneStream.destroy();
+      this.microphoneStream = undefined;
     }
-    if (transcribeClient) {
-      transcribeClient.destroy();
-      transcribeClient = undefined;
+    if (this.transcribeClient) {
+      this.transcribeClient.destroy();
+      this.transcribeClient = undefined;
     }
   };
 
   createTranscribeClient = () => {
-    transcribeClient = new TranscribeStreamingClient({
-      region: awsID.REGION,
+    this.transcribeClient = new TranscribeStreamingClient({
+      region: "us-east-1",
       credentials: {
-        accessKeyId: "YOUR_ACCESS_KEY_ID",
-        secretAccessKey: "YOUR_SECRET_ACCESS_KEY",
+        accessKeyId: "AKIASYSAF2CEXQTBPF63",
+        secretAccessKey: "tk7PIPk3+cVJx3jQJ9IczbyrrYnT8F2Gpwk/CYpe",
       },
     });
   };
 
   createMicrophoneStream = async () => {
-    microphoneStream = new MicrophoneStream.default();
-    microphoneStream.setStream(
+    this.microphoneStream = new MicrophoneStream.default();
+    this.microphoneStream.setStream(
       await window.navigator.mediaDevices.getUserMedia({
         video: false,
         audio: true,
@@ -69,10 +74,10 @@ class Transcription {
     const command = new StartStreamTranscriptionCommand({
       LanguageCode: language,
       MediaEncoding: "pcm",
-      MediaSampleRateHertz: SAMPLE_RATE,
+      MediaSampleRateHertz: sampleRate,
       AudioStream: getAudioStream(),
     });
-    const data = await transcribeClient.send(command);
+    const data = await this.transcribeClient.send(command);
     for await (const event of data.TranscriptResultStream) {
       for (const result of event.TranscriptEvent.Transcript.Results || []) {
         if (result.IsPartial === false) {

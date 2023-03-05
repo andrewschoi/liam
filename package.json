@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-transcribe-streaming": "^3.282.0",
     "aws-sdk": "^2.1327.0",
     "buffer": "^6.0.3",
     "microphone-stream": "^6.0.1",
