@@ -5,7 +5,18 @@
  * @param {string list} wordList
  */
 
-const removeNestedWords = (wordList) => {};
+const removeNestedWords = (wordList) => {
+  const flattenedList = [];
+  for (let i = 0; i < wordList.length; i++) {
+    const word = wordList[i];
+    const subwords = word.split(" ");
+    for (let j = 0; j < subwords.length; j++) {
+      const subword = subwords[j];
+      flattenedList.push(subword);
+    }
+  }
+  return flattenedList;
+};
 
 /**
  * Returns a modified list st. every word that ends with a non-alphanumeric
@@ -13,10 +24,13 @@ const removeNestedWords = (wordList) => {};
  * @param {string list} wordList
  * @param {string} char
  */
-const delimitWords = (wordList, char) => {};
-
-/**
- *
- * @param {string list} wordList
- */
-const lowercaseWords = (wordList) => {};
+const delimitWords = (wordList, char) => {
+  const delimitList = [];
+  for (let i = 0; i < wordList.length; i++) {
+    const word = wordList[i];
+    delimitList.push(word);
+    if (/\W$/.test(word)) {
+      delimitList.push(char);
+    }
+  }
+};
