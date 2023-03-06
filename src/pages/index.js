@@ -4,15 +4,16 @@ import Transcription from "@/lib/Transcription";
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
 
-  // useEffect(() => {
-  //   const transcriptionClient = new Transcription();
-  //   transcriptionClient.startRecording("en-US", (res) =>
-  //     setTranscript((prev) => [...prev, res])
-  //   );
+  useEffect(() => {
+    const transcriptionClient = new Transcription();
+    transcriptionClient.startRecording("en-US", (res) =>
+      setTranscript((prev) => [...prev, res])
+    );
 
-  //   return () => transcriptionClient.stopRecording();
-  // }, []);
+    return () => transcriptionClient.stopRecording();
+  }, []);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -26,6 +27,9 @@ export default function Home() {
         <p className="transcript-body">{transcript}</p>
       </div>
 
+      <div className="answer-container">
+        <p className="answer-body">{answer}</p>
+      </div>
       <div className="question-container">
         <input
           className="question-field"

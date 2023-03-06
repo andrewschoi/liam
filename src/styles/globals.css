@@ -4,6 +4,7 @@
   background-color: #f5f5f5;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  height: 50vh; 
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -21,12 +22,23 @@
   margin-bottom: 0;
 }
 
+.answer-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  height: 10vh;
+  align-items: center;
+}
+
 .question-container {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   display: flex;
+  height: 5vh;
   align-items: center;
 }
 
