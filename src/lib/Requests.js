@@ -14,6 +14,10 @@ const openai = new OpenAIApi(configuration);
  * @param {string} question
  */
 const answerPrompt = async (context, question) => {
+  if (question.length < 1) {
+    return "";
+  }
+
   const parameters = {
     model: "text-davinci-002",
     prompt: createPrompt(context, question),
