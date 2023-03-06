@@ -28,10 +28,13 @@ export default function Home() {
 
       <div className="question-container">
         <input
+          className="question-field"
           placeholder="ask questions..."
           onChange={(e) => handleQuestionChange(e)}
         />
-        <button>Ask Question</button>
+        <button className="submit-button" onClick={handleSubmit}>
+          Ask Question
+        </button>
       </div>
     </div>
   );
