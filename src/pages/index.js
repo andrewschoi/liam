@@ -28,7 +28,7 @@ export default function Home() {
       <div className="transcript-container">
         <h1 className="transcript-header">Transcript</h1>
         <p className="transcript-body">
-          {delimitWords(removeNestedWords(transcript), "|")}
+          {delimitWords(removeNestedWords(transcript), "|").join(" ")}
         </p>
       </div>
 
