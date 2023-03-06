@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Transcription from "@/lib/Transcription";
 import textComplete from "@/lib/Requests";
 
+const { removeNestedWords, delimitWords } = require("../lib/Processing");
+
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [question, setQuestion] = useState("");
@@ -25,7 +27,9 @@ export default function Home() {
     <div>
       <div className="transcript-container">
         <h1 className="transcript-header">Transcript</h1>
-        <p className="transcript-body">{transcript}</p>
+        <p className="transcript-body">
+          {delimitWords(removeNestedWords(transcript), "|")}
+        </p>
       </div>
 
       <div className="answer-container">
