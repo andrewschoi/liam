@@ -14,3 +14,9 @@ const removeNestedWords = (wordList) => {};
  * @param {string} char
  */
 const delimitWords = (wordList, char) => {};
+
+/**
+ *
+ * @param {string list} wordList
+ */
+const lowercaseWords = (wordList) => {};
