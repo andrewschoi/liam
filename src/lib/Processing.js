@@ -33,4 +33,5 @@ const delimitWords = (wordList, char) => {
       delimitList.push(char);
     }
   }
+  return delimitList;
 };
