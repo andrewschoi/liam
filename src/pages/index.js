@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   const handleSubmit = () => {
-    textComplete(transcript, question).then((res) => setAnswer(res));
+    answerPrompt(transcript, question).then((res) => setAnswer(res));
   };
   return (
     <div>
