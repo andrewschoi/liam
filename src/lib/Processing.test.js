@@ -60,4 +60,22 @@ describe("delimitWords", () => {
     const ans = delimitWords(wordList, "a");
     expect(ans).toEqual(["garfield!", "a"]);
   });
+
+  test("punctuation char", () => {
+    const wordList = ["garfield", "!"];
+    const ans = delimitWords(wordList, "a");
+    expect(ans).toEqual(["garfield!"]);
+  });
+
+  test("both functionality", () => {
+    const wordList = ["garfield!", "?"];
+    const ans = delimitWords(wordList, "a");
+    expect(ans).toEqual(["garfield!", "a?"]);
+  });
+
+  test("longer list", () => {
+    const wordList = ["garfield!", "cheese", "?"];
+    const ans = delimitWords(wordList, "m");
+    expect(ans).toEqual(["garfield!", "m", "cheese?"]);
+  });
 });
