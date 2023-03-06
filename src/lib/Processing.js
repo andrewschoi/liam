@@ -19,12 +19,10 @@ const removeNestedWords = (wordList) => {
 };
 
 /**
- * Returns a modified list st. every word that ends with a non-alphanumeric
- * character is succeeded by element char. If an element in a punctuation
- * character on its own, combine with with the last element
+ * Returns an updated list st. every isolated punctuation element is combined
+ * with its preceding element
  * @param {string list} wordList
- * @param {string} char
  */
-export const delimitWords = (wordList, char) => {};
+export const delimitWords = (wordList) => {};
 
 export default removeNestedWords;
