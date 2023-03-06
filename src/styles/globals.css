@@ -31,7 +31,7 @@ html, body {
 }
 
 .transcript-body {
-  font-size: 16px;
+  font-size: 24px;
   color: #666;
   margin-bottom: 0;
 }
@@ -67,7 +67,7 @@ html, body {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  font-size: 16px;
+  font-size: 24px;
   margin-right: 10px;
 }
 

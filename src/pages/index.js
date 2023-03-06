@@ -5,11 +5,12 @@ import textComplete from "@/lib/Requests";
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
 export default function Home() {
-  const [transcript, setTranscript] = useState([]);
+  const [transcript, setTranscript] = useState(["test1", "test2"]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
   useEffect(() => {
+    alert("click to begin");
     const transcriptionClient = new Transcription();
     transcriptionClient.startRecording("en-US", (res) =>
       setTranscript((prev) => [...prev, res])
@@ -30,7 +31,7 @@ export default function Home() {
       <div className="transcript-container">
         <h1 className="transcript-header">Transcript</h1>
         <p className="transcript-body">
-          {delimitWords(removeNestedWords(transcript), "|").join(" ")}
+          {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
         </p>
       </div>
 
