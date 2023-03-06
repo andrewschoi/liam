@@ -5,7 +5,7 @@
  * @param {string list} wordList
  */
 
-const removeNestedWords = (wordList) => {
+export const removeNestedWords = (wordList) => {
   const flattenedList = [];
   for (let i = 0; i < wordList.length; i++) {
     const word = wordList[i];
@@ -27,7 +27,7 @@ const removeNestedWords = (wordList) => {
  * @param {string list} wordList
  * @param {string} char
  */
-const delimitWords = (wordList, char) => {
+export const delimitWords = (wordList, char) => {
   const delimitList = [];
   let prevWord = "";
 
@@ -57,7 +57,7 @@ const delimitWords = (wordList, char) => {
  * Returns the last {limit} characters from wordList
  * @param {string list} wordList
  */
-const truncateWords = (wordList, limit) => {
+export const truncateWords = (wordList, limit) => {
   truncateList = [];
   for (let i = 0; i < wordList.length; i++) {
     const word = wordList[i];
