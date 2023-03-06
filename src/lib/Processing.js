@@ -38,7 +38,8 @@ const delimitWords = (wordList, char) => {
       if (prevWord === "") {
         delimitList.push(word);
       } else {
-        delimitList[delimitList.length - 1] = delimitList[delimitList.length - 1].concat(word);
+        delimitList[delimitList.length - 1] =
+          delimitList[delimitList.length - 1].concat(word);
       }
     } else {
       //word is not punctuation char
@@ -76,7 +77,7 @@ const truncateWords = (wordList, limit) => {
  * @param {string} question
  */
 const createPrompt = (context, question) => {
-  const flatten = removedNestedWords(context);
+  const flatten = removeNestedWords(context);
   const editedList = truncateWords(flatten, 10);
 
   const promptStart = editedList.join(" ");

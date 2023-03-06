@@ -22,7 +22,9 @@ export default function Home() {
     setQuestion(e.target.value);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    textComplete(transcript, question).then((res) => setAnswer(res));
+  };
   return (
     <div>
       <div className="transcript-container">

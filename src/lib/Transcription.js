@@ -68,7 +68,6 @@ class Transcription {
         if (result.IsPartial === false) {
           const noOfResults = result.Alternatives[0].Items.length;
           for (let i = 0; i < noOfResults; i++) {
-            console.log(result.Alternatives[0].Items[i].Content);
             callback(result.Alternatives[0].Items[i].Content + " ");
           }
         }
