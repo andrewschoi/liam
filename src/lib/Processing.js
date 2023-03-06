@@ -77,7 +77,7 @@ const truncateWords = (wordList, limit) => {
  */
 const createPrompt = (context, question) => {
   const flatten = removedNestedWords(context);
-  const editedList = truncateWords(delimit, 10);
+  const editedList = truncateWords(flatten, 10);
 
   const promptStart = editedList.join(" ");
   const promptEnd = question.trim();
