@@ -28,7 +28,9 @@ const answerPrompt = async (context, question) => {
   return response.data.choices[0].text;
 };
 
-const provideSummary = async (context) => {};
+const provideSummary = async (context) => {
+  console.log("test");
+};
 
 module.exports = {
   answerPrompt,

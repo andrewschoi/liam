@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Transcription from "@/lib/Transcription";
 
-const { answerPrompt } = require("../lib/Requests");
+const { answerPrompt, provideSummary } = require("../lib/Requests");
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
+
+const POLL_RATE = 1000; //ms to poll
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
@@ -13,6 +15,7 @@ export default function Home() {
   //needed to allow browser to capture audio
   const [clickEvent, setClickEvent] = useState(false);
 
+  const timerRef = useRef();
   useEffect(() => {
     if (!clickEvent) return;
 
@@ -21,7 +24,19 @@ export default function Home() {
       setTranscript((prev) => [...prev, res])
     );
 
-    return () => transcriptionClient.stopRecording();
+    //provide summary at every poll interval
+    timerRef.current = setInterval(() => {
+      provideSummary(transcript);
+    }, POLL_RATE);
+
+    return () => {
+      //clear interval
+      clearTimeout(timerRef.current);
+      timerRef.current = undefined;
+
+      //destroy transcriptionClient
+      transcriptionClient.stopRecording();
+    };
   }, [clickEvent]);
 
   const handleQuestionChange = (e) => {
