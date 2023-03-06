@@ -132,4 +132,8 @@ body {
   background-color: #2c3e50;
 }
 
+.submit-button:disabled {
+  background-color: #2c3e50;
+}
+
 

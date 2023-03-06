@@ -16,6 +16,8 @@ export default function Home() {
   const [clickEvent, setClickEvent] = useState(false);
 
   const timerRef = useRef();
+  const submitButtonRef = useRef();
+
   useEffect(() => {
     if (!clickEvent) return;
 
@@ -46,8 +48,13 @@ export default function Home() {
   };
 
   const handleSubmit = () => {
-    answerPrompt(transcript, question).then((res) => setAnswer(res));
+    submitButtonRef.current.disabled = true;
+    answerPrompt(transcript, question).then((res) => {
+      setAnswer(res);
+      submitButtonRef.current.disabled = false;
+    });
   };
+
   return (
     <div>
       <div className="row-container">
@@ -78,7 +85,11 @@ export default function Home() {
           placeholder="ask questions..."
           onChange={(e) => handleQuestionChange(e)}
         />
-        <button className="submit-button" onClick={handleSubmit}>
+        <button
+          ref={submitButtonRef}
+          className="submit-button"
+          onClick={handleSubmit}
+        >
           Ask Question
         </button>
       </div>
