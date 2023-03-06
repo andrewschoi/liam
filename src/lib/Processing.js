@@ -48,21 +48,11 @@ const delimitWords = (wordList, char) => {
 };
 
 /**
- * Returns the last {limit} characters from wordList
+ * Returns the last [limit] words from wordList
  * @param {string list} wordList
- * @param {int} limit
  */
 const truncateWords = (wordList, limit) => {
-  const truncateList = [];
-  for (let i = 0; i < wordList.length; i++) {
-    const word = wordList[i];
-    if (word.length <= limit) {
-      truncateList.push(word);
-    } else {
-      truncateList.push(word.slice(-limit));
-    }
-  }
-  return truncateList;
+  return wordList.slice(-limit);
 };
 
 /**
@@ -87,7 +77,7 @@ const createPrompt = (context, question) => {
  * Creates a prompt that "effectively" uses the context to generate summary
  * @param {string list} context
  */
-const summaryPrompt = (context) => {};
+const summaryPrompt = (context) => { };
 
 module.exports = {
   removeNestedWords,
