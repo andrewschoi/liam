@@ -19,10 +19,16 @@ const removeNestedWords = (wordList) => {
 };
 
 /**
- * Returns an updated list st. every isolated punctuation element is combined
- * with its preceding element
+ * Returns a list st. every word that ends with a non-alphanumeric
+ * character is succeeded by element char. If an element in a punctuation
+ * character on its own, combine with with the last element
  * @param {string list} wordList
  */
 export const delimitWords = (wordList) => {};
 
+/**
+ * Returns the last {limit} characters from wordList
+ * @param {string list} wordList
+ */
+export const truncateWords = (wordList, limit) => {};
 export default removeNestedWords;
