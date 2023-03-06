@@ -1,5 +1,6 @@
 import { Configuration, OpenAIApi } from "openai";
-import createPrompt from "./Processing";
+
+const { createPrompt } = require("./Processing");
 
 const configuration = new Configuration({
   apiKey: "sk - WkXIctjQAWIThoRwdA1zT3BlbkFJ2O5QUs4MRUjdOc5YEUYB",
