@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Transcription from "@/lib/Transcription";
 import textComplete from "@/lib/Requests";
+import removeNestedWords, {
+  truncateWords,
+  delimitWords,
+} from "@lib/Processing.";
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
