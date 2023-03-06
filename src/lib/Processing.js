@@ -24,7 +24,7 @@ const removeNestedWords = (wordList) => {
  * @param {string list} wordList
  * @param {string} char
  */
-const delimitWords = (wordList, char) => {
+export const delimitWords = (wordList, char) => {
   const delimitList = [];
   for (let i = 0; i < wordList.length; i++) {
     const word = wordList[i];
@@ -35,3 +35,5 @@ const delimitWords = (wordList, char) => {
   }
   return delimitList;
 };
+
+export default removeNestedWords;
