@@ -11,5 +11,12 @@ export default function Home() {
 
     return () => transcriptionClient.stopRecording();
   }, []);
-  return <div>{transcript}</div>;
+  return (
+    <div>
+      <div className="transcript-container">
+        <h1 className="transcript-header">Transcript</h1>
+        <p className="transcript-body">{transcript}</p>
+      </div>
+    </div>
+  );
 }
