@@ -47,13 +47,13 @@ describe("removeNestedWords", () => {
 describe("delimitWords", () => {
   test("empty list", () => {
     const wordList = [];
-    const ans = delimitWords(wordList);
+    const ans = delimitWords(wordList, "!");
     expect(ans).toEqual([]);
   })
 
-  test("empty list", () => {
-    const wordList = [];
-    const ans = delimitWords(wordList, "!");
-    expect(ans).toEqual([]);
+  test("punctuation word", () => {
+    const wordList = ["garfield!"];
+    const ans = delimitWords(wordList, "a");
+    expect(ans).toEqual(["garfield!", "a"]);
   })
 })
