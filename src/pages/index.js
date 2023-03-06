@@ -33,23 +33,28 @@ export default function Home() {
   };
   return (
     <div>
-      <div className="transcript-container">
-        <h1 className="transcript-header">Transcript</h1>
-        <button onClick={() => setClickEvent(true)}>Click to begin</button>
-        <p className="transcript-body">
-          {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
-        </p>
-      </div>
+      <div className="row-container">
+        <div className="transcript-container">
+          <h1 className="transcript-header">Transcript</h1>
+          <button className="begin-button" onClick={() => setClickEvent(true)}>
+            Click to begin
+          </button>
+          <p className="transcript-body">
+            {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
+          </p>
+        </div>
 
-      <div>
-        <h1 className="summary-header">Summary</h1>
-        <p className="summary-body">{summary}</p>
+        <div className="summary-container">
+          <h1 className="summary-header">Summary</h1>
+          <p className="summary-body">{summary}</p>
+        </div>
       </div>
 
       <div className="answer-container">
         <h1 className="answer-header">Answer</h1>
         <p className="answer-body">{answer}</p>
       </div>
+
       <div className="question-container">
         <input
           className="question-field"

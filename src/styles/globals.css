@@ -1,83 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-html, body {
-  height: 100%;
+/* General Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.transcript-container {
+body {
+  font-family: Arial, sans-serif;
   background-color: #f5f5f5;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  height: 40vh;
-  overflow: auto; /* add a scrollbar if content exceeds container size */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Transcript Styles */
+.row-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.transcript-container {
+  flex-basis: 60%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .transcript-header {
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
+  margin-bottom: 1rem;
 }
 
-.answer-header {
-  font-size: 24px;
+.begin-button {
+  background-color: #3f51b5;
+  color: #fff;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 10px;
-  color: #333;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.begin-button:hover {
+  background-color: #2c3e50;
 }
 
 .transcript-body {
-  font-size: 24px;
-  color: #666;
-  margin-bottom: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
+/* Summary Styles */
+.summary-container {
+  flex-basis: 35%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.summary-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.summary-body {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Answer Styles */
 .answer-container {
-  background-color: #f5f5f5;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-  height: 10vh; /* set height to 30% of viewport */
-  overflow: auto; /* add a scrollbar if content exceeds container size */
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.answer-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .answer-body {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
 
+/* Question Styles */
 .question-container {
   background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  height: 10vh; /* set height to 20% of viewport */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
 }
 
 .question-field {
-  flex-grow: 1;
-  padding: 10px;
-  border-radius: 5px;
+  width: 100%;
+  padding: 0.5rem;
   border: none;
-  font-size: 24px;
-  margin-right: 10px;
+  border-radius: 3px;
+  margin-bottom: 1rem;
 }
 
 .submit-button {
-  background-color: #007bff;
+  background-color: #3f51b5;
   color: #fff;
-  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.submit-button:hover {
+  background-color: #2c3e50;
+}
+
 
