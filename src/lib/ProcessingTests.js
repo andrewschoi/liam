@@ -1,4 +1,4 @@
-import removeNestedWords, { delimitWords } from "./Processing";
+import { removeNestedWords, delimitWords, truncateWords } from "./Processing";
 
 describe("removeNestedWords", () => {
   test("empty list", () => {
@@ -41,5 +41,19 @@ describe("removeNestedWords", () => {
     const wordList = ["cheese mouse or big mouse"];
     const ans = removeNestedWords(wordList);
     expect(ans).toEqual(["cheese", "mouse", "or", "big", "mouse"]);
+  })
+})
+
+describe("delimitWords", () => {
+  test("empty list", () => {
+    const wordList = [];
+    const ans = delimitWords(wordList);
+    expect(ans).toEqual([]);
+  })
+
+  test("empty list", () => {
+    const wordList = [];
+    const ans = delimitWords(wordList, "!");
+    expect(ans).toEqual([]);
   })
 })
