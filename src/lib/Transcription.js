@@ -9,33 +9,17 @@ class Transcription {
     this.sampleRate = 44100;
     this.microphoneStream = undefined;
     this.transcribeClient = undefined;
+  }
+  startRecording = async (language, callback) => {
+    if (!language) {
+      return false;
+    }
+    if (this.microphoneStream || this.transcribeClient) {
+      stopRecording();
+    }
     this.createTranscribeClient();
     this.createMicrophoneStream();
-    this.getAudioStream();
-  }
-
-  getAudioStream = async function* () {
-    for await (const chunk of this.microphoneStream) {
-      if (chunk.length <= this.sampleRate) {
-        yield {
-          AudioEvent: {
-            AudioChunk: encodePCMChunk(chunk),
-          },
-        };
-      }
-    }
-  };
-
-  encodePCMChunk = (chunk) => {
-    const input = MicrophoneStream.default.toRaw(chunk);
-    let offset = 0;
-    const buffer = new ArrayBuffer(input.length * 2);
-    const view = new DataView(buffer);
-    for (let i = 0; i < input.length; i++, offset += 2) {
-      let s = Math.max(-1, Math.min(1, input[i]));
-      view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
-    }
-    return Buffer.from(buffer);
+    await this.startStreaming(language, callback);
   };
 
   stopRecording = function () {
@@ -44,14 +28,14 @@ class Transcription {
       this.microphoneStream.destroy();
       this.microphoneStream = undefined;
     }
-    if (this.transcribeClient) {
+    if (transcribeClient) {
       this.transcribeClient.destroy();
       this.transcribeClient = undefined;
     }
   };
 
   createTranscribeClient = () => {
-    this.transcribeClient = new TranscribeStreamingClient({
+    transcribeClient = new TranscribeStreamingClient({
       region: "us-east-1",
       credentials: {
         accessKeyId: "AKIASYSAF2CEXQTBPF63",
@@ -74,7 +58,7 @@ class Transcription {
     const command = new StartStreamTranscriptionCommand({
       LanguageCode: language,
       MediaEncoding: "pcm",
-      MediaSampleRateHertz: sampleRate,
+      MediaSampleRateHertz: SAMPLE_RATE,
       AudioStream: getAudioStream(),
     });
     const data = await this.transcribeClient.send(command);
@@ -89,6 +73,30 @@ class Transcription {
         }
       }
     }
+  };
+
+  getAudioStream = async function* () {
+    for await (const chunk of this.microphoneStream) {
+      if (chunk.length <= this.sampleRate) {
+        yield {
+          AudioEvent: {
+            AudioChunk: this.encodePCMChunk(chunk),
+          },
+        };
+      }
+    }
+  };
+
+  encodePCMChunk = (chunk) => {
+    const input = MicrophoneStream.default.toRaw(chunk);
+    let offset = 0;
+    const buffer = new ArrayBuffer(input.length * 2);
+    const view = new DataView(buffer);
+    for (let i = 0; i < input.length; i++, offset += 2) {
+      let s = Math.max(-1, Math.min(1, input[i]));
+      view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+    }
+    return Buffer.from(buffer);
   };
 }
 
