@@ -5,19 +5,23 @@ import textComplete from "@/lib/Requests";
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
 export default function Home() {
-  const [transcript, setTranscript] = useState(["test1", "test2"]);
+  const [transcript, setTranscript] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
+  //needed to allow browser to capture audio
+  const [clickEvent, setClickEvent] = useState(false);
+
   useEffect(() => {
-    alert("click to begin");
+    if (!clickEvent) return;
+
     const transcriptionClient = new Transcription();
     transcriptionClient.startRecording("en-US", (res) =>
       setTranscript((prev) => [...prev, res])
     );
 
     return () => transcriptionClient.stopRecording();
-  }, []);
+  }, [clickEvent]);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -30,6 +34,7 @@ export default function Home() {
     <div>
       <div className="transcript-container">
         <h1 className="transcript-header">Transcript</h1>
+        <button onClick={() => setClickEvent(true)}>Click to begin</button>
         <p className="transcript-body">
           {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
         </p>
