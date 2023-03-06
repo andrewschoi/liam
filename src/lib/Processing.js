@@ -75,7 +75,19 @@ const truncateWords = (wordList, limit) => {
  * @param {string list} context
  * @param {string} question
  */
-const createPrompt = (context, question) => {};
+const createPrompt = (context, question) => {
+  const flatten = removedNestedWords(context);
+  const delimit = delimitWords(flatten);
+  const editedList = truncateWords(delimit, 10);
+
+  const promptStart = editedList.join(" ");
+  const promptEnd = question.trim();
+  const prompt =
+    "Here is context for a person or people speaking:" +
+    `\n\n${promptStart}\n\n${"End of context."}\n\n${promptEnd}?\n`;
+
+  return prompt;
+};
 
 module.exports = {
   removeNestedWords,
