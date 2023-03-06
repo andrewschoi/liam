@@ -12,7 +12,7 @@ const removeNestedWords = (wordList) => {
     const subwords = word.split(" ");
     for (let j = 0; j < subwords.length; j++) {
       const subword = subwords[j];
-      if (!(/^\s*$/.test(subword))) {
+      if (!/^\s*$/.test(subword)) {
         flattenedList.push(subword);
       }
     }
@@ -32,16 +32,17 @@ export const delimitWords = (wordList) => {
 
   for (let i = 0; i < wordList.length; i++) {
     const word = wordList[i];
-    if (/^\W+$/.test(word)) {  //word is punctuation char
+    if (/^\W+$/.test(word)) {
+      //word is punctuation char
       if (prevWord === "") {
-        delimitList.push(word)
+        delimitList.push(word);
+      } else {
+        delimitList[delimitList.length - 1].concat(word);
       }
-      else {
-        delimitList[delimitList.length - 1].concat(word)
-      }
-    }
-    else {  //word is not punctuation char
-      if (/\W$/.test(prevWord)) {  //prev word ends with non-alphanumeric char
+    } else {
+      //word is not punctuation char
+      if (/\W$/.test(prevWord)) {
+        //prev word ends with non-alphanumeric char
         delimitList.push(char);
       }
       delimitList.push(word);
@@ -61,9 +62,8 @@ export const truncateWords = (wordList, limit) => {
     const word = wordList[i];
     if (word.length <= limit) {
       truncateList.push(word);
-    }
-    else {
-      truncateList.push(word.slice(-limit))
+    } else {
+      truncateList.push(word.slice(-limit));
     }
   }
   return truncateList;

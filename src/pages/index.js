@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Transcription from "@/lib/Transcription";
+import textComplete from "@/lib/Requests";
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  // useEffect(() => {
-  //   const transcriptionClient = new Transcription();
-  //   transcriptionClient.startRecording("en-US", (res) =>
-  //     setTranscript((prev) => [...prev, res])
-  //   );
+  useEffect(() => {
+    const transcriptionClient = new Transcription();
+    transcriptionClient.startRecording("en-US", (res) =>
+      setTranscript((prev) => [...prev, res])
+    );
 
-  //   return () => transcriptionClient.stopRecording();
-  // }, []);
+    return () => transcriptionClient.stopRecording();
+  }, []);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
