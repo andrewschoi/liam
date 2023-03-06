@@ -24,10 +24,12 @@ export default function Home() {
       setTranscript((prev) => [...prev, res])
     );
 
-    //provide summary at every poll interval
-    // timerRef.current = setInterval(() => {
-    //   provideSummary(transcript);
-    // }, POLL_RATE);
+    // provide summary at every poll interval
+    timerRef.current = setInterval(() => {
+      provideSummary(transcript).then((res) =>
+        setSummary((prev) => [...prev, res])
+      );
+    }, POLL_RATE);
 
     return () => {
       //clear interval
