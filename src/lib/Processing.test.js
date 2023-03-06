@@ -79,3 +79,17 @@ describe("delimitWords", () => {
     expect(ans).toEqual(["garfield!", "m", "cheese?", "m"]);
   });
 });
+
+describe("truncateWords", () => {
+  test("empty list", () => {
+    const wordList = [];
+    const ans = truncateWords(wordList, 0);
+    expect(ans).toEqual([]);
+  });
+
+  test("multiple word list", () => {
+    const wordList = ["cheese", "mouse", "or", "big", "mouse"];
+    const ans = truncateWords(wordList, 3);
+    expect(ans).toEqual(["or", "big", "mouse"]);
+  });
+});
