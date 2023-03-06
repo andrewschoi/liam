@@ -50,6 +50,7 @@ const delimitWords = (wordList, char) => {
 /**
  * Returns the last {limit} characters from wordList
  * @param {string list} wordList
+ * @param {int} limit
  */
 const truncateWords = (wordList, limit) => {
   const truncateList = [];

@@ -25,9 +25,9 @@ export default function Home() {
     );
 
     //provide summary at every poll interval
-    timerRef.current = setInterval(() => {
-      provideSummary(transcript);
-    }, POLL_RATE);
+    // timerRef.current = setInterval(() => {
+    //   provideSummary(transcript);
+    // }, POLL_RATE);
 
     return () => {
       //clear interval
