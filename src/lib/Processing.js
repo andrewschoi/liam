@@ -58,7 +58,7 @@ const delimitWords = (wordList, char) => {
  * @param {string list} wordList
  */
 const truncateWords = (wordList, limit) => {
-  truncateList = [];
+  const truncateList = [];
   for (let i = 0; i < wordList.length; i++) {
     const word = wordList[i];
     if (word.length <= limit) {
