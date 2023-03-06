@@ -92,4 +92,16 @@ describe("truncateWords", () => {
     const ans = truncateWords(wordList, 3);
     expect(ans).toEqual(["or", "big", "mouse"]);
   });
+
+  test("truncate entire list", () => {
+    const wordList = ["wings", "", "over ithaca", " "];
+    const ans = truncateWords(wordList, 4);
+    expect(ans).toEqual(["wings", "", "over ithaca", " "]);
+  });
+
+  test("truncate nothing", () => {
+    const wordList = ["wings", "", "over ithaca", " "];
+    const ans = truncateWords(wordList, 0);
+    expect(ans).toEqual([]);
+  });
 });

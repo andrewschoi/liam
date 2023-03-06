@@ -52,6 +52,7 @@ const delimitWords = (wordList, char) => {
  * @param {string list} wordList
  */
 const truncateWords = (wordList, limit) => {
+  if (limit == 0) { return []; }
   return wordList.slice(-limit);
 };
 
