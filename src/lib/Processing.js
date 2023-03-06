@@ -38,7 +38,7 @@ const delimitWords = (wordList, char) => {
       if (prevWord === "") {
         delimitList.push(word);
       } else {
-        delimitList[delimitList.length - 1].concat(word);
+        delimitList[delimitList.length - 1] = delimitList[delimitList.length - 1].concat(word);
       }
     } else {
       //word is not punctuation char
