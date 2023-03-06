@@ -1,6 +1,7 @@
 import { Buffer } from "buffer";
 const {
   TranscribeStreamingClient,
+  StartStreamTranscriptionCommand,
 } = require("@aws-sdk/client-transcribe-streaming");
 const MicrophoneStream = require("microphone-stream");
 
@@ -28,14 +29,14 @@ class Transcription {
       this.microphoneStream.destroy();
       this.microphoneStream = undefined;
     }
-    if (transcribeClient) {
+    if (this.transcribeClient) {
       this.transcribeClient.destroy();
       this.transcribeClient = undefined;
     }
   };
 
   createTranscribeClient = () => {
-    transcribeClient = new TranscribeStreamingClient({
+    this.transcribeClient = new TranscribeStreamingClient({
       region: "us-east-1",
       credentials: {
         accessKeyId: "AKIASYSAF2CEXQTBPF63",
@@ -58,8 +59,8 @@ class Transcription {
     const command = new StartStreamTranscriptionCommand({
       LanguageCode: language,
       MediaEncoding: "pcm",
-      MediaSampleRateHertz: SAMPLE_RATE,
-      AudioStream: getAudioStream(),
+      MediaSampleRateHertz: this.sampleRate,
+      AudioStream: this.getAudioStream(),
     });
     const data = await this.transcribeClient.send(command);
     for await (const event of data.TranscriptResultStream) {
@@ -76,6 +77,7 @@ class Transcription {
   };
 
   getAudioStream = async function* () {
+    if (this.microphoneStream === undefined) return;
     for await (const chunk of this.microphoneStream) {
       if (chunk.length <= this.sampleRate) {
         yield {
