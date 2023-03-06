@@ -42,7 +42,7 @@ const delimitWords = (wordList, char) => {
       }
     } else {
       //word is not punctuation char
-      if (/[\W\d]*$/.test(prevWord)) {
+      if (/[\W\d]+$/.test(prevWord)) {
         //prev word ends with non-alphanumeric char
         delimitList.push(char);
       }
