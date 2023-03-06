@@ -56,4 +56,5 @@ export const delimitWords = (wordList) => {
  * @param {string list} wordList
  */
 export const truncateWords = (wordList, limit) => { };
+
 export default removeNestedWords;
