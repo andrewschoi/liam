@@ -28,30 +28,23 @@ const removeNestedWords = (wordList) => {
  * @param {string} char
  */
 const delimitWords = (wordList, char) => {
-  const delimitList = [];
-  let prevWord = "";
-
-  for (let i = 0; i < wordList.length; i++) {
-    const word = wordList[i];
-    if (/^\W+$/.test(word)) {
-      //word is punctuation char
-      if (prevWord === "") {
-        delimitList.push(word);
-      } else {
-        delimitList[delimitList.length - 1] =
-          delimitList[delimitList.length - 1].concat(word);
-      }
+  const alphanumeric =
+    "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBN";
+  let stack = [];
+  while (wordList.length > 0) {
+    const elem = wordList.shift();
+    if (elem.length == 1 && !alphanumeric.includes(elem[0])) {
+      stack.push(stack.pop() + elem[0]);
+      stack.push(char);
+    } else if (!alphanumeric.includes(elem[elem.length - 1])) {
+      stack.push(elem);
+      stack.push(char);
     } else {
-      //word is not punctuation char
-      if (/[\W\d]+$/.test(prevWord)) {
-        //prev word ends with non-alphanumeric char
-        delimitList.push(char);
-      }
-      delimitList.push(word);
+      stack.push(elem);
     }
-    prevWord = word;
   }
-  return delimitList;
+
+  return stack;
 };
 
 /**
@@ -89,9 +82,16 @@ const createPrompt = (context, question) => {
   return prompt;
 };
 
+/**
+ * Creates a prompt that "effectively" uses the context to generate summary
+ * @param {string list} context
+ */
+const summaryPrompt = (context) => {};
+
 module.exports = {
   removeNestedWords,
   delimitWords,
   truncateWords,
   createPrompt,
+  summaryPrompt,
 };

@@ -8,7 +8,12 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-const textComplete = async (context, question) => {
+/**
+ * Returns the result from openai language model given context and question
+ * @param {string} context
+ * @param {string} question
+ */
+const answerPrompt = async (context, question) => {
   const parameters = {
     model: "text-davinci-002",
     prompt: createPrompt(context, question),
@@ -23,4 +28,9 @@ const textComplete = async (context, question) => {
   return response.data.choices[0].text;
 };
 
-export default textComplete;
+const provideSummary = async (context) => {};
+
+module.exports = {
+  answerPrompt,
+  provideSummary,
+};

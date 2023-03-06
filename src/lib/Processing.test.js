@@ -64,18 +64,18 @@ describe("delimitWords", () => {
   test("punctuation char", () => {
     const wordList = ["garfield", "!"];
     const ans = delimitWords(wordList, "a");
-    expect(ans).toEqual(["garfield!"]);
+    expect(ans).toEqual(["garfield!", "a"]);
   });
 
   test("both functionality", () => {
     const wordList = ["garfield!", "?"];
     const ans = delimitWords(wordList, "a");
-    expect(ans).toEqual(["garfield!", "a?"]);
+    expect(ans).toEqual(["garfield!", "a?", "a"]);
   });
 
   test("longer list", () => {
     const wordList = ["garfield!", "cheese", "?"];
     const ans = delimitWords(wordList, "m");
-    expect(ans).toEqual(["garfield!", "m", "cheese?"]);
+    expect(ans).toEqual(["garfield!", "m", "cheese?", "m"]);
   });
 });

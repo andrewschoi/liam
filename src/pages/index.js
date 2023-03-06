@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Transcription from "@/lib/Transcription";
-import textComplete from "@/lib/Requests";
 
+const { answerPrompt } = require("../lib/Requests");
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [summary, setSummary] = useState([]);
 
   //needed to allow browser to capture audio
   const [clickEvent, setClickEvent] = useState(false);
@@ -38,6 +39,11 @@ export default function Home() {
         <p className="transcript-body">
           {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
         </p>
+      </div>
+
+      <div>
+        <h1 className="summary-header">Summary</h1>
+        <p className="summary-body">{summary}</p>
       </div>
 
       <div className="answer-container">
