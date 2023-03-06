@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 .transcript-container {
+  font-family: 'Roboto', sans-serif;
   background-color: #f0f0f0;
   padding: 20px;
   border-radius: 5px;
@@ -8,12 +11,14 @@
 
 .transcript-header {
   font-size: 24px;
+  font-weight: 500;
   margin-bottom: 10px;
   color: #333;
 }
 
 .transcript-body {
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: 400;
   color: #666;
   margin-bottom: 0;
 }
