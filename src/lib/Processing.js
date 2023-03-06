@@ -25,8 +25,9 @@ const removeNestedWords = (wordList) => {
  * character is succeeded by element char. If an element in a punctuation
  * character on its own, combine with with the last element
  * @param {string list} wordList
+ * @param {string} char
  */
-export const delimitWords = (wordList) => {
+export const delimitWords = (wordList, char) => {
   const delimitList = [];
   let prevWord = "";
 
