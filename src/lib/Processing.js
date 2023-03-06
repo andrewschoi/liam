@@ -55,6 +55,18 @@ export const delimitWords = (wordList) => {
  * Returns the last {limit} characters from wordList
  * @param {string list} wordList
  */
-export const truncateWords = (wordList, limit) => { };
+export const truncateWords = (wordList, limit) => {
+  truncateList = [];
+  for (let i = 0; i < wordList.length; i++) {
+    const word = wordList[i];
+    if (word.length <= limit) {
+      truncateList.push(word);
+    }
+    else {
+      truncateList.push(word.slice(-limit))
+    }
+  }
+  return truncateList;
+};
 
 export default removeNestedWords;
