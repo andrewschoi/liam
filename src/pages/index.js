@@ -58,7 +58,10 @@ export default function Home() {
   return (
     <main>
       <div>
-        Listening Integated with AI Machine - (LIAM)
+        <div className="title-container">
+          <h1 className="title-header">LIAM</h1>
+          <h3 className="subtitle-header">Listening Integated with AI Machine</h3>
+        </div>
         <div className="row-container">
           <div className="transcript-container">
             <h1 className="transcript-header">Transcript</h1>
