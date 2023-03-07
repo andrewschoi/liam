@@ -35,7 +35,7 @@ const answerPrompt = async (context, question) => {
 const provideSummary = async (context) => {
   const parameters = {
     model: "text-davinci-002",
-    prompt: summaryPrompt(context, question),
+    prompt: summaryPrompt(context),
     temperature: 0.7,
     max_tokens: 256,
     top_p: 1,
