@@ -52,7 +52,9 @@ const delimitWords = (wordList, char) => {
  * @param {string list} wordList
  */
 const truncateWords = (wordList, limit) => {
-  if (limit == 0) { return []; }
+  if (limit == 0) {
+    return [];
+  }
   return wordList.slice(-limit);
 };
 
@@ -63,7 +65,7 @@ const truncateWords = (wordList, limit) => {
  */
 const createPrompt = (context, question) => {
   const flatten = removeNestedWords(context);
-  const editedList = truncateWords(flatten, 10);
+  const editedList = truncateWords(flatten, 100);
 
   const promptStart = editedList.join(" ");
   const promptEnd = question.trim();
@@ -78,7 +80,15 @@ const createPrompt = (context, question) => {
  * Creates a prompt that "effectively" uses the context to generate summary
  * @param {string list} context
  */
-const summaryPrompt = (context) => { };
+const summaryPrompt = (context) => {
+  const truncatedContext = truncateWords(removeNestedWords(context), 100).join(
+    " "
+  );
+  const prompt =
+    "Provide an concise summary for the following: " + truncatedContext;
+
+  return prompt;
+};
 
 module.exports = {
   removeNestedWords,
