@@ -60,7 +60,7 @@ export default function Home() {
       <div>
         <div className="title-container">
           <h1 className="title-header">LIAM</h1>
-          <h3 className="subtitle-header">Listening Integated with AI Machine</h3>
+          <h3 className="subtitle-header">Listening Integrated with AI Machine</h3>
         </div>
         <div className="row-container">
           <div className="transcript-container">
