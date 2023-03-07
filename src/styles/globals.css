@@ -24,6 +24,7 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 .transcript-container {
@@ -34,7 +35,6 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 10px;
 }
 
@@ -73,7 +73,6 @@ body {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  margin-bottom: 1rem;
   border-radius: 10px;
 }
 
