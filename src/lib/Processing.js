@@ -85,7 +85,8 @@ const summaryPrompt = (context) => {
     " "
   );
   const prompt =
-    "Provide an concise summary for the following: " + truncatedContext;
+    "Here is context for a person or people speaking:" +
+    `\n\n${truncatedContext}\n\n${"End of context."}\n\n${"Provide a summary"}\n`;
 
   return prompt;
 };

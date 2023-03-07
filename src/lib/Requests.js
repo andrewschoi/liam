@@ -37,7 +37,7 @@ const provideSummary = async (context) => {
     model: "text-davinci-002",
     prompt: summaryPrompt(context),
     temperature: 0.7,
-    max_tokens: 256,
+    max_tokens: 500,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
