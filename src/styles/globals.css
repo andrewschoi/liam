@@ -150,6 +150,10 @@ body {
   text-align: center;
 }
 
+.title-header {
+  font-size: 60px;
+}
+
 main {
   margin: 15px;
 }
