@@ -27,7 +27,10 @@ body {
 }
 
 .transcript-container {
-  flex-basis: 60%;
+  min-width: 50%;
+  max-width: 100%;
+  flex-grow: 1;
+  margin-right: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -65,7 +68,8 @@ body {
 
 /* Summary Styles */
 .summary-container {
-  flex-basis: 35%;
+  /* flex-basis: 40%; */
+  width: 40%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
