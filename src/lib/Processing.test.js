@@ -104,4 +104,10 @@ describe("truncateWords", () => {
     const ans = truncateWords(wordList, 0);
     expect(ans).toEqual([]);
   });
+
+  test("truncate over length of list", () => {
+    const wordList = ["wings", "", "over ithaca", " "];
+    const ans = truncateWords(wordList, 10);
+    expect(ans).toEqual(["wings", "", "over ithaca", " "]);
+  });
 });
