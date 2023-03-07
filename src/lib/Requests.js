@@ -1,6 +1,6 @@
 const { Configuration, OpenAIApi } = require("openai");
 
-const { createPrompt } = require("./Processing");
+const { createPrompt, summaryPrompt } = require("./Processing");
 
 const configuration = new Configuration({
   apiKey: "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",
@@ -33,7 +33,18 @@ const answerPrompt = async (context, question) => {
 };
 
 const provideSummary = async (context) => {
-  console.log("test");
+  const parameters = {
+    model: "text-davinci-002",
+    prompt: summaryPrompt(context, question),
+    temperature: 0.7,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  };
+
+  const response = await openai.createCompletion(parameters);
+  return response.data.choices[0].text;
 };
 
 module.exports = {
