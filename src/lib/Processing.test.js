@@ -2,6 +2,7 @@ const {
   removeNestedWords,
   delimitWords,
   truncateWords,
+  summaryPrompt,
 } = require("./Processing");
 
 describe("removeNestedWords", () => {
@@ -103,5 +104,13 @@ describe("truncateWords", () => {
     const wordList = ["wings", "", "over ithaca", " "];
     const ans = truncateWords(wordList, 0);
     expect(ans).toEqual([]);
+  });
+});
+
+describe("summaryPrompt", () => {
+  test("example context", () => {
+    const exampleContext = "Cornell University is a school in upstate New York.";
+    const ans = summaryPrompt(exampleContext);
+    expect(ans).toBeDefined();
   });
 });

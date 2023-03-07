@@ -1,3 +1,5 @@
+const { Configuration, OpenAIApi } = require("openai");
+
 /**
  * Returns a "flattened" list, list whose elements contain no spaces and
  * "nested" elements with spaces are separated into distinct elements,
@@ -78,7 +80,31 @@ const createPrompt = (context, question) => {
  * Creates a prompt that "effectively" uses the context to generate summary
  * @param {string list} context
  */
-const summaryPrompt = (context) => { };
+const summaryPrompt = async (context) => {
+  const configuration = new Configuration({
+    apiKey: "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",
+  });
+  const openai = new OpenAIApi(configuration);
+  if (context.length < 1) { return ""; }
+  const prompt = "Effectively summarize the following passage: ";
+
+  const parameters = {
+    model: "text-davinci-002",
+    prompt: (prompt + context),
+    temperature: 0.7,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  };
+
+  try {
+    const response = await openai.createCompletion(parameters);
+    return response.data.choices[0].text;
+  } catch (err) {
+    return "";
+  }
+};
 
 module.exports = {
   removeNestedWords,

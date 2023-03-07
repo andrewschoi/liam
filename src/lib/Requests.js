@@ -33,7 +33,7 @@ const answerPrompt = async (context, question) => {
 };
 
 const provideSummary = async (context) => {
-  console.log("test");
+  return await summaryPrompt(context);
 };
 
 module.exports = {
