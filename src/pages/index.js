@@ -57,6 +57,7 @@ export default function Home() {
 
   return (
     <div>
+      Listening Integated with AI Machine - (LIAM)
       <div className="row-container">
         <div className="transcript-container">
           <h1 className="transcript-header">Transcript</h1>
@@ -81,12 +82,10 @@ export default function Home() {
           </ul>
         </div>
       </div>
-
       <div className="answer-container">
         <h1 className="answer-header">Answer</h1>
         <p className="answer-body">{answer}</p>
       </div>
-
       <div className="question-container">
         <input
           className="question-field"
