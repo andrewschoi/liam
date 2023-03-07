@@ -154,6 +154,10 @@ body {
   font-size: 60px;
 }
 
+.subtitle-header {
+  font-size: 15px;
+}
+
 main {
   margin: 15px;
 }
