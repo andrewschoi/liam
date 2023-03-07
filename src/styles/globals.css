@@ -82,6 +82,11 @@ body {
   line-height: 1.5;
 }
 
+.summary-list {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
 /* Answer Styles */
 .answer-container {
   background-color: #fff;

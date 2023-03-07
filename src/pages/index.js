@@ -4,7 +4,7 @@ import Transcription from "@/lib/Transcription";
 const { answerPrompt, provideSummary } = require("../lib/Requests");
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
-const POLL_RATE = 20000; //ms to poll
+const POLL_RATE = 10000; //ms to poll
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
@@ -28,9 +28,9 @@ export default function Home() {
 
     // provide summary at every poll interval
     timerRef.current = setInterval(() => {
-      provideSummary(transcript).then((res) =>
-        setSummary((prev) => [...prev, res])
-      );
+      provideSummary(transcript).then((res) => {
+        setSummary((prev) => [...prev, res]);
+      });
     }, POLL_RATE);
 
     return () => {
@@ -70,7 +70,15 @@ export default function Home() {
 
         <div className="summary-container">
           <h1 className="summary-header">Summary</h1>
-          <p className="summary-body">{summary}</p>
+          <ul className="summary-list">
+            {summary.map((point, i) => {
+              return (
+                <li className="summary-body" key={i}>
+                  {point}
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </div>
 
