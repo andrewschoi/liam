@@ -105,7 +105,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div>
+      <div className="footer">
         <p>Andrew Choi, Mason Bulling, Alex Giang</p>
       </div>
     </main>
