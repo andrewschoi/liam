@@ -40,6 +40,7 @@ body {
   display: flex;
   flex-wrap: flex;
   flex-direction: column;
+  border: 1px solid #ccc;
 }
 
 .transcript-header {
