@@ -34,14 +34,29 @@ body {
   margin-right: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  /* padding: 1rem; */
   border-radius: 10px;
+  height: 250px;
+  display: flex;
+  flex-wrap: flex;
+  flex-direction: column;
 }
 
 .transcript-header {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: lightskyblue;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 1rem;
+  height: 55px;
+}
+
+.transcript-title {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  padding: 10px 10px 10px 10px;
 }
 
 .begin-button {
@@ -55,6 +70,10 @@ body {
   margin-bottom: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+  height: 35px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .begin-button:hover {

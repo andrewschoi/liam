@@ -65,10 +65,12 @@ export default function Home() {
         <div>
           <div className="row-container">
             <div className="transcript-container">
-              <h1 className="transcript-header">Transcript</h1>
-              <button className="begin-button" onClick={() => setClickEvent(true)}>
-                Click to begin
-              </button>
+              <div className="transcript-header">
+                <h1 className="transcript-title">Transcript</h1>
+                <button className="begin-button" onClick={() => setClickEvent(true)}>
+                  Click to begin
+                </button>
+              </div>
               <p className="transcript-body">
                 {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
               </p>
