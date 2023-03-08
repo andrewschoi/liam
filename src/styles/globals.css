@@ -34,9 +34,8 @@ body {
   margin-right: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* padding: 1rem; */
   border-radius: 10px;
-  height: 250px;
+  height: 275px;
   display: flex;
   flex-wrap: flex;
   flex-direction: column;
@@ -124,6 +123,7 @@ body {
   padding: 1rem;
   margin-bottom: 20px;
   border-radius: 10px;
+  height: 115px;
 }
 
 .answer-header {
@@ -179,7 +179,7 @@ body {
   background-color: lightskyblue;
   text-align: center;
   color: black;
-  padding: 15px;
+  padding: 8px;
 }
 
 .title-header {
@@ -202,7 +202,7 @@ body {
   width: 100%;
   background-color: lightskyblue;
   color: black;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
 }
 
