@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
 
 /* General Styles */
 * {
@@ -68,7 +68,6 @@ body {
 
 /* Summary Styles */
 .summary-container {
-  /* flex-basis: 40%; */
   width: 40%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
