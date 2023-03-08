@@ -105,6 +105,9 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <div>
+        <p>Andrew Choi, Mason Bulling, Alex Giange</p>
+      </div>
     </main>
   );
 }
