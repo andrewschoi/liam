@@ -169,7 +169,7 @@ body {
 
 /* Title Styles */
 .title-container {
-  background-color: #3f51b5;
+  background-color: lightskyblue;
   text-align: center;
   color: #fff;
   padding: 15px;
@@ -193,7 +193,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #3f51b5;
+  background-color: lightskyblue;
   color: #fff;
   padding: 20px;
   text-align: center;
