@@ -33,18 +33,12 @@ const answerPrompt = async (context, question) => {
 };
 
 const provideSummary = async (context) => {
-  const parameters = {
-    model: "text-davinci-002",
-    prompt: summaryPrompt(context),
-    temperature: 0.7,
-    max_tokens: 500,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-  };
+  const response = await openai.ChatCompletion.create(
+    (model = "gpt-3.5-turbo"),
+    (messages = summaryPrompt(context))
+  );
 
-  const response = await openai.createCompletion(parameters);
-  return response.data.choices[0].text;
+  return response.choices[0].message.content;
 };
 
 module.exports = {
