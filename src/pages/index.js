@@ -28,7 +28,7 @@ export default function Home() {
 
     // provide summary at every poll interval
     timerRef.current = setInterval(() => {
-      provideSummary(transcript).then((res) => {
+      provideSummary(transcript, summary).then((res) => {
         setSummary((prev) => [...prev, res]);
       });
     }, POLL_RATE);
@@ -60,12 +60,17 @@ export default function Home() {
       <div>
         <div className="title-container">
           <h1 className="title-header">LIAM</h1>
-          <h3 className="subtitle-header">Listening Integrated with AI Model</h3>
+          <h3 className="subtitle-header">
+            Listening Integrated with AI Model
+          </h3>
         </div>
         <div className="row-container">
           <div className="transcript-container">
             <h1 className="transcript-header">Transcript</h1>
-            <button className="begin-button" onClick={() => setClickEvent(true)}>
+            <button
+              className="begin-button"
+              onClick={() => setClickEvent(true)}
+            >
               Click to begin
             </button>
             <p className="transcript-body">
