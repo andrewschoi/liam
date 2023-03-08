@@ -171,7 +171,7 @@ body {
 .title-container {
   background-color: lightskyblue;
   text-align: center;
-  color: #fff;
+  color: black;
   padding: 15px;
 }
 
@@ -194,7 +194,7 @@ body {
   left: 0;
   width: 100%;
   background-color: lightskyblue;
-  color: #fff;
+  color: black;
   padding: 20px;
   text-align: center;
 }
