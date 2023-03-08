@@ -77,18 +77,16 @@ const createPrompt = (context, question) => {
 };
 
 /**
- * Creates a prompt that "effectively" uses the context to generate summary
+ * Creates a prompt that "effectively" uses the context and previous summaries
+ * to generate summary
  * @param {string list} context
+ * @param {string list} prevSummaries
  */
-const summaryPrompt = (context) => {
-  const truncatedContext = truncateWords(removeNestedWords(context), 100).join(
-    " "
-  );
-  const prompt =
-    "Here is context for a person or people speaking:" +
-    `\n\n${truncatedContext}\n\n${"End of context."}\n\n${"Provide a summary"}\n`;
+const summaryPrompt = (context, prevSummaries) => {
+  const lastMessage = removeNestedWords(context);
+  const messageContext = [...prevSummaries, lastMessage];
 
-  return prompt;
+  return messageContext;
 };
 
 module.exports = {
