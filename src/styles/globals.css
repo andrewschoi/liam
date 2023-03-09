@@ -2,11 +2,11 @@
 
 :root {
   --text-primary: #ffffff;
-  --secondary-color: #313131;
-  --accent-color: #1f1f1f;
+  --secondary-color: #5D5C61;
+  --accent-color: #7395AE;
   --light-button: #bdbbb7;
-  --text-secondary: #f1f1f1;
-  --dark-text: #969593;
+  --text-secondary: #B1A296;
+  --dark-text: #557A95;
 }
 
 /* General Styles */
@@ -196,7 +196,7 @@ body {
 .title-container {
   background-color: var(--secondary-color);
   text-align: center;
-  color: black;
+  color: var(--dark-text);
   padding: 8px;
 }
 
@@ -217,8 +217,8 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: lightskyblue;
-  color: black;
+  /* background-color: #7395AE; */
+  /* color: black; */
   padding: 15px;
   text-align: center;
 }
