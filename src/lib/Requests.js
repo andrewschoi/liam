@@ -2,8 +2,9 @@ const { Configuration, OpenAIApi } = require("openai");
 
 const { createPrompt, summaryPrompt } = require("./Processing");
 
+const API_KEY = "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";
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -32,13 +33,22 @@ const answerPrompt = async (context, question) => {
   return response.data.choices[0].text;
 };
 
-const provideSummary = async (context) => {
-  const response = await openai.ChatCompletion.create(
-    (model = "gpt-3.5-turbo"),
-    (messages = summaryPrompt(context))
-  );
+const provideSummary = async (context, prevSummaries) => {
+  const messageContext = summaryPrompt(context, prevSummaries);
+  console.log(messageContext);
+  if (messageContext === []) return "";
 
-  return response.choices[0].message.content;
+  const response = await openai
+    .createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: messageContext,
+    })
+    .then((response) => response.data.choices[0].message.content)
+    .catch((e) => {
+      return "could not capture last audio context";
+    });
+
+  return response;
 };
 
 module.exports = {

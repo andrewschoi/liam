@@ -83,8 +83,36 @@ const createPrompt = (context, question) => {
  * @param {string list} prevSummaries
  */
 const summaryPrompt = (context, prevSummaries) => {
-  const lastMessage = removeNestedWords(context);
-  const messageContext = [...prevSummaries, lastMessage];
+  if (context === []) {
+    return [];
+  }
+  const lastMessage = truncateWords(
+    delimitWords(removeNestedWords(context), ""),
+    100
+  ).join(" ");
+
+  if (prevSummaries === [])
+    return [
+      { role: "user", content: lastMessage },
+      {
+        role: "assistant",
+        content: "concisely summarize the above to the best of your ability",
+      },
+    ];
+
+  const prevSummariesWithRoles = prevSummaries.map((summary) => ({
+    role: "user",
+    content: summary,
+  }));
+
+  const messageContext = [
+    ...prevSummariesWithRoles,
+    { role: "user", content: lastMessage },
+    {
+      role: "assistant",
+      content: "concisely summarize the above to the best of your ability",
+    },
+  ];
 
   return messageContext;
 };

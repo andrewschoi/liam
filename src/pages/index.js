@@ -4,7 +4,7 @@ import Transcription from "@/lib/Transcription";
 const { answerPrompt, provideSummary } = require("../lib/Requests");
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
-const POLL_RATE = 10000; //ms to poll
+const POLL_RATE = 5000; //ms to poll
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
@@ -18,6 +18,14 @@ export default function Home() {
   const timerRef = useRef();
   const submitButtonRef = useRef();
 
+  const transcriptRef = useRef([]);
+  const summariesRef = useRef([]);
+
+  useEffect(() => {
+    transcriptRef.current = delimitWords(removeNestedWords(transcript), "");
+    summariesRef.current = summary;
+  }, [summary, transcript]);
+
   useEffect(() => {
     if (!clickEvent) return;
 
@@ -28,9 +36,11 @@ export default function Home() {
 
     // provide summary at every poll interval
     timerRef.current = setInterval(() => {
-      provideSummary(transcript, summary).then((res) => {
-        setSummary((prev) => [...prev, res]);
-      });
+      provideSummary(transcriptRef.current, summariesRef.current).then(
+        (res) => {
+          setSummary((prev) => [...prev, res]);
+        }
+      );
     }, POLL_RATE);
 
     return () => {
