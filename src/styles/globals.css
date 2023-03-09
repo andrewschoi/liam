@@ -4,8 +4,8 @@
   --text-primary: #ffffff;
   --secondary-color: #4b6c9a;
   --accent-color: #dff0ff;
-  --begin-button: grey;
-  --light-button: #b58527;
+  --begin-button: #5d93ba;
+  --light-button: #001f3f;
   --text-secondary: #B1A296;
   --dark-text: #557A95;
 }
@@ -254,10 +254,11 @@ body {
 
 @keyframes spin-anim {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
