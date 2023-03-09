@@ -2,9 +2,10 @@
 
 :root {
   --text-primary: #ffffff;
-  --secondary-color: #5D5C61;
-  --accent-color: #7395AE;
-  --light-button: #bdbbb7;
+  --secondary-color: #4b6c9a;
+  --accent-color: #dff0ff;
+  --begin-button: grey;
+  --light-button: #b58527;
   --text-secondary: #B1A296;
   --dark-text: #557A95;
 }
@@ -25,7 +26,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  color: var(--dark-text);
+  color: var(--text-primary);
 }
 
 /* Transcript Styles */
@@ -69,7 +70,7 @@ body {
 }
 
 .begin-button {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -180,7 +181,7 @@ body {
 }
 
 .submit-button {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -196,14 +197,14 @@ body {
 }
 
 .submit-button:disabled {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
 }
 
 /* Title Styles */
 .title-container {
   background-color: var(--secondary-color);
   text-align: center;
-  color: var(--dark-text);
+  color: var(--text-primary);
   padding: 8px;
 }
 
