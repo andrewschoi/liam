@@ -13,7 +13,7 @@ export default function Home() {
   const [summary, setSummary] = useState([]);
 
   //needed to allow browser to capture audio
-  const [clickEvent, setClickEvent] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
 
   const timerRef = useRef();
   const submitButtonRef = useRef();
@@ -27,7 +27,7 @@ export default function Home() {
   }, [summary, transcript]);
 
   useEffect(() => {
-    if (!clickEvent) return;
+    if (!isRecording) return;
 
     const transcriptionClient = new Transcription();
     transcriptionClient.startRecording("en-US", (res) =>
@@ -51,7 +51,7 @@ export default function Home() {
       //destroy transcriptionClient
       transcriptionClient.stopRecording();
     };
-  }, [clickEvent]);
+  }, [isRecording]);
 
   const handleQuestionChange = (e) => {
     setQuestion(e.target.value);
@@ -79,14 +79,22 @@ export default function Home() {
                 <h1 className="transcript-title">Transcript</h1>
                 <button
                   className="begin-button"
-                  onClick={() => setClickEvent(true)}
+                  onClick={() => setIsRecording(true)}
                 >
                   Click to begin
                 </button>
               </div>
-              <p className="transcript-body">
-                {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
-              </p>
+
+              <div className="row-container">
+                <p className="transcript-body">
+                  {delimitWords(removeNestedWords(transcript), "").join(" ")}{" "}
+                </p>
+                {isRecording ? (
+                  <div className="loader-container">
+                    <div className="spinner"></div>
+                  </div>
+                ) : null}
+              </div>
             </div>
 
             <div className="summary-container">

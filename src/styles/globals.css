@@ -220,6 +220,37 @@ body {
   text-align: center;
 }
 
+.row-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.loader-container {
+  display: inline-block;
+  background: #fff;
+  flex-grow: 1;
+  margin-left: 15px
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 8px solid;
+  border-color: #3d5af1 transparent #3d5af1 transparent;
+  border-radius: 50%;
+  animation: spin-anim 1.2s linear infinite;
+}
+
+@keyframes spin-anim {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
 main {
   margin: 20px;
   margin-left: 5%;
