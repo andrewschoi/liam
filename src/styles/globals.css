@@ -38,16 +38,12 @@ body {
 }
 
 .transcript-container {
-  min-width: 50%;
-  max-width: 100%;
-  flex-grow: 1;
+  width: 58%;
   margin-right: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   height: 275px;
-  display: flex;
-  flex-wrap: flex;
   flex-direction: column;
   border: 1px solid #ccc;
 }
@@ -104,6 +100,7 @@ body {
   /* padding: 1rem; */
   border-radius: 10px;
   border: 1px solid #ccc;
+  height: 275px;
 }
 
 .summary-header {
