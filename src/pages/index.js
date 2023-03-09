@@ -4,7 +4,7 @@ import Transcription from "@/lib/Transcription";
 const { answerPrompt, provideSummary } = require("../lib/Requests");
 const { removeNestedWords, delimitWords } = require("../lib/Processing");
 
-const POLL_RATE = 5000; //ms to poll
+const POLL_RATE = 120000; //ms to poll
 
 export default function Home() {
   const [transcript, setTranscript] = useState([]);
