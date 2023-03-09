@@ -35,7 +35,7 @@ const answerPrompt = async (context, question) => {
 
 const provideSummary = async (context, prevSummaries) => {
   const messageContext = summaryPrompt(context, prevSummaries);
-  console.log(messageContext);
+
   if (messageContext === []) return "";
 
   const response = await openai
