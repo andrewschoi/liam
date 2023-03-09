@@ -2,9 +2,10 @@
 
 :root {
   --text-primary: #ffffff;
-  --secondary-color: #5D5C61;
-  --accent-color: #7395AE;
-  --light-button: #bdbbb7;
+  --secondary-color: #4b6c9a;
+  --accent-color: #dff0ff;
+  --begin-button: grey;
+  --light-button: #b58527;
   --text-secondary: #B1A296;
   --dark-text: #557A95;
 }
@@ -25,7 +26,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  color: var(--dark-text);
+  color: var(--text-primary);
 }
 
 /* Transcript Styles */
@@ -46,6 +47,8 @@ body {
   height: 275px;
   flex-direction: column;
   border: 1px solid #ccc;
+  overflow-y: auto;
+  max-height: 275px;
 }
 
 .transcript-header {
@@ -67,7 +70,7 @@ body {
 }
 
 .begin-button {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -90,6 +93,13 @@ body {
 .transcript-body {
   font-size: 1.2rem;
   line-height: 1.5;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 /* Summary Styles */
@@ -97,10 +107,11 @@ body {
   width: 40%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  /* padding: 1rem; */
   border-radius: 10px;
   border: 1px solid #ccc;
   height: 275px;
+  overflow-y: auto;
+  max-height: 275px;
 }
 
 .summary-header {
@@ -170,7 +181,7 @@ body {
 }
 
 .submit-button {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
   color: #fff;
   font-size: 1rem;
   font-weight: bold;
@@ -186,14 +197,14 @@ body {
 }
 
 .submit-button:disabled {
-  background-color: var(--accent-color);
+  background-color: var(--begin-button);
 }
 
 /* Title Styles */
 .title-container {
   background-color: var(--secondary-color);
   text-align: center;
-  color: var(--dark-text);
+  color: var(--text-primary);
   padding: 8px;
 }
 
