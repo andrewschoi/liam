@@ -64,16 +64,23 @@ const truncateWords = (wordList, limit) => {
  * @param {string} question
  */
 const createPrompt = (context, question) => {
-  const flatten = removeNestedWords(context);
-  const editedList = truncateWords(flatten, 100);
+  if (context === []) return [];
+  if (question === "") return [];
 
-  const promptStart = editedList.join(" ");
-  const promptEnd = question.trim();
-  const prompt =
-    "Here is context for a person or people speaking:" +
-    `\n\n${promptStart}\n\n${"End of context."}\n\n${promptEnd}?\n`;
+  const lastMessage = truncateWords(
+    delimitWords(removeNestedWords(context), ""),
+    150
+  ).join(" ");
 
-  return prompt;
+  const messageContext = [
+    { role: "user", content: lastMessage },
+    {
+      role: "assistant",
+      content: `answer the following question with this context to the best of your ability: ${question}`,
+    },
+  ];
+
+  return messageContext;
 };
 
 /**

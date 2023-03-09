@@ -18,19 +18,19 @@ const answerPrompt = async (context, question) => {
   if (question.length < 1) {
     return "";
   }
+  const messageContext = createPrompt(context, question);
 
-  const parameters = {
-    model: "text-davinci-002",
-    prompt: createPrompt(context, question),
-    temperature: 0.7,
-    max_tokens: 256,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
-  };
+  const response = await openai
+    .createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: messageContext,
+    })
+    .then((response) => response.data.choices[0].message.content)
+    .catch((e) => {
+      return "[error] could not answer this question";
+    });
 
-  const response = await openai.createCompletion(parameters);
-  return response.data.choices[0].text;
+  return response;
 };
 
 const provideSummary = async (context, prevSummaries) => {
@@ -45,7 +45,7 @@ const provideSummary = async (context, prevSummaries) => {
     })
     .then((response) => response.data.choices[0].message.content)
     .catch((e) => {
-      return "could not capture last audio context";
+      return "[error] could not capture last audio context";
     });
 
   return response;
