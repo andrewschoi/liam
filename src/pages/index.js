@@ -66,60 +66,65 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <div>
-        <div className="title-container">
-          <h1 className="title-header">LIAM</h1>
-          <h3 className="subtitle-header">
-            Listening Integrated with AI Model
-          </h3>
-        </div>
-        <div className="row-container">
-          <div className="transcript-container">
-            <h1 className="transcript-header">Transcript</h1>
-            <button
-              className="begin-button"
-              onClick={() => setClickEvent(true)}
-            >
-              Click to begin
-            </button>
-            <p className="transcript-body">
-              {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
-            </p>
-          </div>
-
-          <div className="summary-container">
-            <h1 className="summary-header">Summary</h1>
-            <ul className="summary-list">
-              {summary.map((point, i) => {
-                return (
-                  <li className="summary-body" key={i}>
-                    {point}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
-        <div className="answer-container">
-          <h1 className="answer-header">Answer</h1>
-          <p className="answer-body">{answer}</p>
-        </div>
-        <div className="question-container">
-          <input
-            className="question-field"
-            placeholder="ask questions..."
-            onChange={(e) => handleQuestionChange(e)}
-          />
-          <button
-            ref={submitButtonRef}
-            className="submit-button"
-            onClick={handleSubmit}
-          >
-            Ask Question
-          </button>
-        </div>
+    <div>
+      <div className="title-container">
+        <h1 className="title-header">LIAM</h1>
+        <h3 className="subtitle-header">Listening Integrated with AI Model</h3>
       </div>
-    </main>
+      <main>
+        <div>
+          <div className="row-container">
+            <div className="transcript-container">
+              <div className="transcript-header">
+                <h1 className="transcript-title">Transcript</h1>
+                <button
+                  className="begin-button"
+                  onClick={() => setClickEvent(true)}
+                >
+                  Click to begin
+                </button>
+              </div>
+              <p className="transcript-body">
+                {delimitWords(removeNestedWords(transcript), " | ").join(" ")}
+              </p>
+            </div>
+
+            <div className="summary-container">
+              <h1 className="summary-header">Summary</h1>
+              <ul className="summary-list">
+                {summary.map((point, i) => {
+                  return (
+                    <li className="summary-body" key={i}>
+                      {point}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+          <div className="answer-container">
+            <h1 className="answer-header">Answer</h1>
+            <p className="answer-body">{answer}</p>
+          </div>
+          <div className="question-container">
+            <input
+              className="question-field"
+              placeholder="ask questions..."
+              onChange={(e) => handleQuestionChange(e)}
+            />
+            <button
+              ref={submitButtonRef}
+              className="submit-button"
+              onClick={handleSubmit}
+            >
+              Ask Question
+            </button>
+          </div>
+        </div>
+        <div className="footer">
+          <p className="footer-text">Andrew Choi, Mason Bulling, Alex Giang</p>
+        </div>
+      </main>
+    </div>
   );
 }
